@@ -1,66 +1,155 @@
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+:root {
+  --bg-gradient: radial-gradient(circle, #fcfcfc 0%, #e8e8e8 100%);
+  --calc-gradient: linear-gradient(145deg, #610a0a, #3e0404);
+  --btn-default: #444444;
+  --btn-default-hover: #555555;
+  --btn-default-active: #333333;
+  --btn-hover-glow: #0e6359d8;
+  --btn-opr: #8970a0;
+  --btn-opr-hover: #9c84b4;
+  --btn-opr-active: #765d8d;
+  --btn-eq: #28a745;
+  --btn-eq-hover: #218838;
+  --btn-eq-active: #1e7e34;
+  
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: #f4f4f4;
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
 
-    .calculator {
-      width: 300px;
-      background: #510606;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg-gradient);
+}
 
-    .display input {
-      width: 100%;
-      height: 60px;
-      font-size: 26px;
-      text-align: right;
-      padding: 20px;
-      border: none;
-      outline: none;
-      border-radius: 8px;
-      margin-bottom: 15px;
-    }
+.calculator {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: var(--calc-gradient);
+  padding: 24px;
+  gap: 16px;
+}
 
-    .row {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+.display {
+  flex: 0 0 16%;
+  min-height: 80px;
+}
 
-    button {
-      flex: 1;
-      height: 55px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #444;
-      color: white;
-    }
+.display input {
+  width: 100%;
+  height: 100%;
+  font-size: calc(24px + 2.5vh);
+  font-weight: 600;
+  text-align: right;
+  padding: 10px 24px;
+  border: none;
+  outline: none;
+  border-radius: 16px;
+  background: #ffffff;
+  color: #1a1a1a;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
 
-    button:hover {
-      background: #0e6359d8;
-    }
+.row {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+}
 
-    .opr {
-      background: #8970a0;
-      color: white;
-    }
-    #eqBtn {
-      background: #28a745;
-      color: white;
-    }
+button {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  font-size: calc(16px + 1.8vh);
+  font-weight: 600;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  background: var(--btn-default);
+  color: #ffffff;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
 
-    #eqBtn:hover {
-      background: #218838;
-    }
+button:hover {
+  background: var(--btn-hover-glow);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(14, 99, 89, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.opr {
+  background: var(--btn-opr);
+}
+
+.opr:hover {
+  background: var(--btn-opr-hover);
+  box-shadow: 
+    0 6px 12px rgba(137, 112, 160, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.opr:active {
+  background: var(--btn-opr-active);
+}
+
+#eqBtn {
+  background: var(--btn-eq);
+}
+
+#eqBtn:hover {
+  background: var(--btn-eq-hover);
+  box-shadow: 
+    0 6px 12px rgba(40, 167, 69, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+#eqBtn:active {
+  background: var(--btn-eq-active);
+}
+
+/* Adjust paddings/gaps slightly on very small landscape viewports to guarantee no layout overflow */
+@media (max-height: 480px) {
+  .calculator {
+    padding: 12px;
+    gap: 8px;
+  }
+  .display {
+    flex: 0 0 18%;
+  }
+  .display input {
+    border-radius: 10px;
+    padding: 5px 16px;
+  }
+  .row {
+    gap: 8px;
+  }
+  button {
+    border-radius: 10px;
+  }
+}
