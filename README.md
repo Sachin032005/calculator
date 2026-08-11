@@ -28,6 +28,10 @@ This project is a functional web calculator designed to perform basic arithmetic
 2. Open the project folder.
 3. Open `index.html` in your web browser.
 
+## Screenshots
+
+![Web Calculator](Calculator.png)
+
 ## Live Demo
 
 https://calculator-zeta-nine-083oeexlbo.vercel.app/
